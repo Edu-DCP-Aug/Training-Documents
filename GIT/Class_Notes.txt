@@ -352,6 +352,10 @@ DAY - 2 - 6th Aug. 2023
 						git add					  git commit					git push
 			
 			
+			
+			git init 	==> Is used to initialize a new git repo.
+							It create a GIT_Directory & default branch called 'master'.
+							
 			git clone 	==> It is used to clone/copy the entire remote repo. into Local Machine.
 			
 			git add 	==> It is used to add the changes from Working dir. to Staging Area 
@@ -394,7 +398,188 @@ DAY - 2 - 6th Aug. 2023
 				2. Create a Free Tier Account in AWS Cloud Platform
 						Create Linux Machines - Virtual Machines
 						Installing all the required tools.
+						To connect to AWS Instance :
+							- EC2 Instance Connect
+ 							- SSH Client
+							   - MobaXterm - Windows Users
+							- Terminals
+				3. Docker hub account
+				
+			
+			Install and Manage GIT ::::
+			
+			In Windows Machine ::
+				GIT BASH			===> *
+				GIT CLI 
+				GIT GUI
+
+				
+			Create a Root-Directory :		
+				Project_Directory
+					==
+					---
+			
+			git status ---
+			
+			how to config User_Name and Email_ID
+			
+			GIT Config :
+			
+				Global Config				
+					git config --global user.name "LoksaiETA"
+					git config --global user.email "eta@xys.com"
+				
+				
+				Local Config
+					git config user.name "testuser1"
+					git config user.email "eta@xys.com"
+					
+		
+		
+			git add <file_name>
+			git add a1.doc e1.md
+			git add *.txt
+			git add .
+			
+			git show <commit_id>
+			
+			git log 			
+			git log --oneline
+			
+			git log -2
+			git log --oneline -2
+			
+			git log --stat 
+			git log --stat -1
 			
 			
+			unstage :::
+			
+			
+			git rm --cached <index.jsp> ==> This will jus remove the changes from staging area.
+			
+			git rm -f index.jsp			==> This will remove from both staging area and working dir.
+				
+  501  git --version
+  502  cd d:
+  503  cd e:
+  504  clear
+  505  mkdir DCP-5th-Aug
+  506  cd DCP-5th-Aug/
+  507  mkdir samplerepo1
+  508  cd samplerepo1/
+  509  clear
+  510  ls
+  511  git init
+  512  ls -a
+  513  cd .git/
+  514  ls
+  515  cd ..
+  516  clear
+  517  ls
+  518  git status
+  519  echo "Hello"
+  520  echo "record1" >> file1.txt
+  521  ls
+  522  cat file1.txt
+  523  echo "record2" >> file1.txt
+  524  cat file1.txt
+  525  git status
+  526  git add file1.txt
+  527  git status
+  528  git commit -m "Created file1.txt"
+  529  git status
+  530  git log
+  531  pwd
+  532  ls
+  533  clear
+  534  git log
+  535  ls -a
+  536  git config --global user.name "LoksaiETA"
+  537  echo "rec1" >> file2.txt
+  538  git add file2.txt
+  539  git commit -m "Created file2.txt"
+  540  git log
+  541  git config user.name "testuser1"
+  542  echo "rec1" >> file3.txt
+  543  git add file3.txt
+  544  git commit -m "Created file3.txt"
+  545  git log
+  546  cd ..
+  547  mkdir samplerepo2
+  548  cd samplerepo2/
+  549  ls
+  550  clear
+  551  git status
+  552  git init
+  553  git status
+  554  echo "rec1" >> s1.txt
+  555  git add s1.txt
+  556  git commit -m "Created S1.txt"
+  557  git log
+  558  echo "rec1"
+  559  echo "rec1" >> l1.txt
+  560  echo "rec2" >> l1.txt
+  561  echo "rec3" >> l1.txt
+  562  echo "rec3" >> l1.txt
+  563  echo "rec3" >> l1.txt
+  564  echo "rec3" >> l1.txt
+  565  echo "rec3" >> l1.txt
+  566* echo "rec3" > l1.txt
+  567  cat l1.txt
+  568  echo "RECORD" > l1.txt
+  569  cat l1.txt
+  570  clear
+  571  git status
+  572  git add l1.txt
+  573  git commit -m "created L1.txt"
+  574  ls
+  575  clear
+  576  git log
+  577  git status
+  578  ls
+  579  clear
+  580  echo "rec1" >> w1.txt
+  581  echo "rec1" >> w2.txt
+  582  echo "rec1" >> w2.java
+  583  echo "rec1" >> q2.java
+  584  echo "rec1" >> a1.doc
+  585  echo "rec1" >> e1.md
+  586  git status
+  587  git add *.txt
+  588  git status
+  589  git add .
+  590  git status
+  591  git
+  592  clear
+  593  git status
+  594  git commit -m "Files Created"
+  595  git log
+  596  git log --oneline
+  597  git show 9a1fa44
+  598  clear
+  599  git log --oneline
+  600  git log --oneline -2
+  601  git log --oneline -1
+  602  git log -1
+  603  git log --stat
+  604  clear
+  605  clear
+  606  ls
+  607  git status
+  608  echo "index.jsp file contents" >> index.jsp
+  609  git status
+  610  ls
+  611  git add .
+  612  git status
+  613  git rm --cached index.jsp
+  614  ls
+  615  git status
+  616  git add .
+  617  clear
+  618  git status
+  619  git rm -f index.jsp
+  620  ls
+  621  history
 			
 			
