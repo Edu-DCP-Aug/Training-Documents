@@ -1,0 +1,291 @@
+####################
+5th Aug. 2023
+Class 1
+DCP-Aug-Batch
+####################
+
+#######################
+DAY - 1 - 5th Aug. 2023
+#######################
+
+
+		Introduction to DevOps !!!
+		
+		Fundamentals of DevOps :::
+		
+		Software ?	--> Collection of Programs
+		
+		Software / Application ?
+		
+		Types of Applications ?
+			- Desktop Application
+			- Web Application
+			- Mobile Application
+
+			E_Commerce Portal --> www.amazon.com
+			
+		Software Development Life Cycle - (SDLC)
+			- Requirement Analysis
+			- Design 
+			- Code/Development
+			- Testing 
+			- Deployment/Implementation
+			- Maintainence/Monitor
+
+
+		Waterfall Model - Is linear in fashion/Top-Down Approach
+						
+			E_Commerce Portal 		==> 9 Months to complete this proj.
+			Project 1: Core
+				- Requirement Analysis		10 func. +2 Func
+				- Design 
+				- Code/Development
+				- Testing 
+				- Deployment/Implementation
+				- Maintainence/Monitor		
+			
+			Project 2: Enhancement
+				- Requirement Analysis		10 func. +2 Func
+				- Design 
+				- Code/Development
+				- Testing 
+				- Deployment/Implementation
+				- Maintainence/Monitor		
+
+		Agile Methodologies :::::
+			
+			E_Commerce Portal 		==> 9 Months to complete this proj.
+			
+			Modules / Iterations 
+
+			Iteration1 - 								developer1
+				- Requirement Analysis		10 func.
+				- Design 
+				- Code/Development
+				- Testing 
+				- Implementation
+				- Maintainence/Monitor	
+				
+			Iteration2 - 								
+				- Requirement Analysis		10 func.
+				- Design 
+				- Code/Development
+				- Testing 
+				- Implementation
+				- Maintainence/Monitor	
+			
+			.
+			.
+			.			
+			
+			Iteration10 - 
+				- Requirement Analysis		10 func.
+				- Design 
+				- Code/Development
+				- Testing 
+				- Implementation
+				- Maintainence/Monitor	
+
+			Iteration10.1 - 
+				- Requirement Analysis		
+				- Design 
+				- Code/Development
+				- Testing 
+				- Implementation
+				- Maintainence/Monitor	
+				
+				
+			Using Agile Methodologies we can achieve :::
+			
+				- Continuous Development
+				- Continuous Integration
+				- Continuous Testing
+				- Continuous Delivery
+						--> Continuous Delivery - Is a process of Releasing the software product to Production Environment
+												- This requires Manual intervension/Manual Approvals for Production Release.
+				
+			But, We can't achieve :
+			
+				- Continuous Deployment :
+						- Is a process of Releasing the software product to Production Environment
+                        - This doesn't requires any Manual intervension/Manual Approvals for Production Release.
+						
+						
+						
+		DevOps ::::
+		
+			Is a software Development Strategy, which helps to promote the collaboration between the teams like Development Team & Operations Team to achieve Continuous Development, Continuous Integration, Continuous Testing, Continuous Delivery, Continuous Deployment and Continuous Montoring, - in more automated fashion.
+			
+		Teams :::
+		
+		SDLC 
+		
+			- Infra-Structure Management Team 
+			- Application Development Team
+			- Testing Team 
+			- Release Management Team
+			- Production Support Team
+			- Production Monitoring Team
+			- Security Team
+			
+		
+		Environments :::
+		
+			Non-Prod Environment(Server/VM/Infra-Structure)										Production Environment
+			
+				- Dev Environment
+				- Testing Environment
+					QA - Quality Assurance 
+					UAT - User Acceptance Testing 						========>					Prod Environment	
+				
+		
+		DevOps Stages ::: / DevOps Tools ::::
+		
+		
+			Infra-Structure Management :::
+					Infra-Structure Provisioning/Creating servers	---> Terraform 
+					Infra-Structure Configuration					---> Ansible
+		
+		
+			Continuous Development
+				---> 		It is the capability of the Dev Team to Continuously Develop/Code the application.
+				Developers ???
+				
+				- Code the application :::
+						IDEs - Integrated Development Environment - Eclipse based IDEs/ Visual Studio Code / Visual Studio / Pycharm 
+						GIT/Jenkins
+				
+				- build the application -- Is the process of Compiling the source code & Create Artifacts(Binaries)
+					Maven/Gradle/Ant
+				- Unit Testing 
+				- Deploy the changes for further Testing - 
+				- Send the Notifications to Testing Team 
+			
+			Continuous Integration
+				---> 		It is the capability of the Dev Team to Continuously Integrate the changes for further Testing 
+							Jenkins/Docker/Kubernetes/Ansible
+				
+			
+			Continuous Testing
+				---> 		Perform Automated testing using some testing tools like TestNG/Selenium, Jenkins 
+				
+			Continuous Delivery / Continuous Deployment   -- Jenkins/Docker/Kubernetes/Ansible
+				---> 		Both Continuous Delivery / Continuous Deployment  process are used to release the changes to production.
+					Continuous Delivery ==> This needs manual intervension/Manual Approvals for Production Release
+					
+					Continuous Deployment ===> Starting from Build till production release everything is automated without any manual intervension
+			
+			
+			Continuous Montoring
+				--->		Is used monitor the Applications/Infra-Structure
+									Prometheus/Grafana/Nagios/Splunk/Dynatrace....
+									AppDynamics
+		
+		
+		
+		DevOps Tools :::
+		
+			Self-Managed Tools ::
+				Open Source Tools 
+				 git,jenkins,docker/kubernetes/ansible/terraform
+						
+			Managed Services/Tools 
+				Paid Tools 
+				
+		
+		How to Implement DevOps ::::
+		
+			Based on the Application Architecture ::::
+			
+				Monolith Application Architecture :::
+					It is Tightly coupled application.	
+				
+				Micro-Service Based Application Architecture :::
+					It is loosely coupled Application.
+					Each function/Module is considered a service.
+					Each service can be independently developed and deployed to prod envirnment.
+					
+					
+					
+		www.amazon.com
+		
+			Sign_up				-- Micro-Service1 -> Developer1 - code the changes, test, deploy to further testing - QA/UAT , Release to Production
+			Sign_In				-- Micro-Service2
+			Search
+			Add to Cart
+			Place the order 
+			Payment
+			Confirm order 
+			Track
+					
+		
+		Tele-Comm Domain ::::
+		Tele-Comm Service Provider1 --> Introduce New Offer to their customers --> 
+		Tele-Comm Service Provider2 --> Introduce New Offer to their customers --> 
+		
+		
+			DevOps -->
+			
+				Continuous Delivery --> Downtime 
+				Continuous Deployment 
+		
+		
+			Production Release Activities ::::
+			
+			
+		Banking :::
+
+			Online Banking Service 
+			Online Credit-Card Service 
+			
+				Continuous Delivery --> Downtime 
+				
+					Production Deployment Window --> 4hrs to 6 Hrs. - DownTime 
+							1. It is not working as expected!
+									- Fix that issue. 
+									- Revert the changes. 
+									
+		
+		facebook.com
+		amazon.com
+		Netflix
+		Prime
+		
+				Continuous Deployment 
+				
+				
+		DevOps is all about :: 
+			People / Process / Tools
+								
+
+				- DevOps Team :::
+				
+					- Infra-Structure Management Team 
+					- Application Development Team
+					- Testing Team 
+					- Release Management Team
+					- Production Support Team
+					- Production Monitoring Team
+					- Security Team		
+					
+					
+			Is a software Development Strategy, which helps to promote the collaboration between the teams like Development Team & Operations Team to achieve Continuous Development, Continuous Integration, Continuous Testing, Continuous Delivery, Continuous Deployment and Continuous Montoring, - in more automated fashion.
+			
+			
+			DevOps Team ::::
+			
+				DevOps Associate / Sr. DevOps Asso. /DevOps Engg. / Sr. DevOps Engg. /DevOps Leads / Sr. DevOps Leads / DevOps Architects /DevOps Consultant / SRE.....
+				
+			1. Detailed DevOps Assessment.
+			2. Give Recommendations.
+			
+			
+				Ultimately, DevOps is implemented to achieve Continous Improvement for longer run!
+				
+				
+			waterfall,Agile,DevOps,DevSecOps,GitOps,SRE,MLOps,AIOps............................
+			
+
+			
+			
+			
