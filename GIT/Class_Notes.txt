@@ -582,4 +582,237 @@ DAY - 2 - 6th Aug. 2023
   620  ls
   621  history
 			
+	
+Excellent 1		 5
+good 0					
+bad avg -1		-5
+
+
+
+#########################
+DAY - 3 - 12th Aug. 2023
+#########################
+
+		git ignore
+		git reset 
+		git revert 
+		git branching strategies 
+		
+		
+		
+		git ignore ::::
+		
+			It is used to ignore the files.
+			If you don' want to track any file changes, we can simple mark it ignored files.
+			
+			
+		Java_Web_Appln. Project 
+			
+		Java_Web_Appln.
+			src 
+				main
+					webapp/*.java 
+					test/*.java 
+			targets
+				*.war
+			pom.xml 
+			application.properties
+			application.config
+			
+		git repo ::
+			file --> .gitignore
+				*.war 
+				targets/
+				*.properties 
+				*.doc 
+				*.readme
+				DB_Credentials.json
+			
+		Java_Web_Appln.		3-tier archi. -- frontend,backend(Database),business_Logic
+			src 
+				main
+					webapp/*.java 		-> signin.java
+					test/*.java 
+			targets
+				*.war					-> signin.war
+			pom.xml 
+			application.properties
+			application.config
+			DB_Credentials.json
+			
+		git add .
+		
+		git commit -m "Project"
+		
+		git push 					===>  	Remote Repo.
+
+.gitignore ---> 
+
+		
+		git reset 
+		git revert 		
+		
+		
+		git reset  ::::
+		
+			It is used to undo the changes from git repo. 
+			
+		HEAD 
+		ADD 
+		COMMIT 
+		
+		
+		git reset 
+		
+				---> git reset --soft <commit_id> 
+							==> It just remove the changes from local repo.
+								The Changes will be back to Staging area and it will be available in working directory.
+								
+				---> git reset --mixed <commit_id> 
+							==> It just remove the changes from local repo. as well from staging area.
+								But the Changes still remains in working directory.								
+			
+				---> git reset --hard <commit_id> 
+							==> It remove the changes from local repo., staging area as well as from working directory
+								This is considered as permanent deletion of data/file.
+								
+				********Reset should NOT be used in the shared repository.********
+				Reset will NEVER Create New commit point for its changes.
+								
+								
+		git revert
+		
+			===> 	It is used to undo the changes from git repo. 
+					It will create a new commit point for every revert action to keep track of the changes.
+					This can be used in shared repository
+					
+					
+					git revert <commit_id>
+					
+					
+		git branching strategies :::
+				It is used to perform Parallel Development
+				
+				
+		git init ::::
+					It will initialize a repo. -> GIT_DIR
+					It create default branch 'master'    ==> Its considered as prod copy.
+					
+			Developers' WorkLoad ::
+			
+				Enhancement/Bugfix Project
+				New Project 
+				
+
+		
+			Repo1:
+				master - cm1,cm2,c3,f1cm1,f1cm2
+					feature_Branch1 - cm1,cm2,c3,f1cm1,f1cm2
+					feature_Branch2 - cm1,cm2,c3,f1cm1,f1cm2				
+					
+					
+		Scenario 1 :::
+		
+			Repo1:
+				master - cm1,cm2,c3
+					feature_Branch1 - cm1,cm2,c3
+
+		Scenario 2 :::
+					
+			Repo1:
+				master - cm1,cm2,c3
+					Developer_Branch - cm1,cm2,c3
+						feature_Branch1 - cm1,cm2,c3
+						feature_Branch2 - cm1,cm2,c3
+
+		Scenario 3 :::
+					
+			Repo1:
+				master - cm1,cm2,c3
+					Integration_Branch - cm1,cm2,cm3
+						Developer1_Branch - cm1,cm2,c3
+							feature_Branch1 - cm1,cm2,c3
+							feature_Branch2 - cm1,cm2,c3
+						Developer2_Branch - cm1,cm2,c3
+							feature_Branch1 - cm1,cm2,c3
+							feature_Branch2 - cm1,cm2,c3
+							
+		Scenario 4 :::
+					
+			Repo1:
+				master - cm1,cm2,c3
+					Release_Branch - cm1,cm2,c3
+						Integration_Branch1(Team1) - cm1,cm2,cm3
+							Developer1_Branch - cm1,cm2,c3
+								feature_Branch1 - cm1,cm2,c3
+								feature_Branch2 - cm1,cm2,c3
+							Developer2_Branch - cm1,cm2,c3
+								feature_Branch1 - cm1,cm2,c3
+								feature_Branch2 - cm1,cm2,c3
+						Integration_Branch2(Team2) - cm1,cm2,cm3
+							Developer1_Branch - cm1,cm2,c3
+								feature_Branch1 - cm1,cm2,c3
+								feature_Branch2 - cm1,cm2,c3
+							Developer2_Branch - cm1,cm2,c3
+								feature_Branch1 - cm1,cm2,c3
+								feature_Branch2 - cm1,cm2,c3
+								
+								
+			Demo on GIT Repositories :::
+				
+			Repo1:
+				master - cm1,cm2,c3
+					feature_Branch1 - cm1,cm2,c3
+					feature_Branch2 - cm1,cm2,c3
+					
+			git branch 
+			git branch creation steps :::
+			
+			
+			master: 
+				git switch -c feature1
+				git branch feature2
+				git checkout -b feature3 
+				
+			git merge ==> 	It is used to merge the changes from current branch to target branch
+							git merge command should be executed from target branch
+							
+			Merge Conflict ::::
+					Whenever we try to update the same file at same record level, merge conflict will occur.
+							
+			Fix the Merge Conflict ::
+			
+			How to fix Merge Conflict ????
+			
+				- Identify the file that is causing merge conflict.
+				- Review the file content in target branch
+				- Deside which change has to retained in target branch.
+				- Update the file in target branch with exact file content. (By removing junk data)
+				- git add and commit to complete the merge action.
+
+			In DevOps era.........
+			
+			Always we should prevent merge conflict.!!!
+			
+
+			
+Summary ::
+
+		git reset / revert 
+		git branching strategies
+		create branches 
+		merge the changes to target branch 
+		handle merge conflicts!
+			
+Next : 
+
+			
+		git rebase :::
+		git squash :::
+				
+			
+			
+			
+			
+			
 			
