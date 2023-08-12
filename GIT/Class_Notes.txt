@@ -803,6 +803,249 @@ Summary ::
 		create branches 
 		merge the changes to target branch 
 		handle merge conflicts!
+  504  cd DCP-5th-Aug/
+  505  clear
+  506  ls
+  507  mkdir testrepo1
+  508  cd testrepo1/
+  509  clear
+  510  git init
+  511  ls
+  512  ls -a
+  513  vi .gitignore
+  514  git status
+  515  git add .
+  516  git commit -m "Initial Commit for .gitignore file"
+  517  clear
+  518  ls
+  519  ls -a
+  520  cat .gitignore
+  521  vi .gitignore
+  522  git add .
+  523  git commit -m "Initial Commit for .gitignore file"
+  524  clear
+  525  ls
+  526  ls
+  527  cat .gitignore
+  528  echo "Rec1" >> file1.txt
+  529  echo "Rec1" >> file2.java
+  530  echo "Rec1" >> file3.doc
+  531  echo "Rec1" >> file4.readme
+  532  ls
+  533  git status
+  534  git add .
+  535  git commit -m "created temp files"
+  536  ls
+  537  clear
+  538  cat .gitignore
+  539  ls
+  540  echo "rec1" >> sample1.txt
+  541  git status
+  542  ls
+  543  git log --oneline
+  544  clear
+  545  ls
+  546  ls -a
+  547  cat file3.doc
+  548  git log --stat
+  549  git status
+  550  echo "rec2" >> file3.doc
+  551  ls
+  552  cat file3.doc
+  553  git status
+  554  echo "adfafdasdf" > file3.doc
+  555  cat file3.doc
+  556  git status
+  557  clear
+  558  ls
+  559  cd ..
+  560  mkdir testrepo2
+  561  clear
+  562  cd testrepo2
+  563  clear
+  564  git init
+  565  ls
+  566  clear
+  567  echo "rec1" >> f1.txt
+  568  git add .
+  569  git commit -m "CM1"
+  570  git log --oneline
+  571  echo "rec1" >> f2.txt
+  572  git add .
+  573  git commit -m "CM2"
+  574  echo "rec1" >> f3.txt
+  575  git add .
+  576  git commit -m "CM3"
+  577  echo "rec1" >> f4.txt
+  578  git add .
+  579  git commit -m "CM4"
+  580  echo "rec1" >> f5.txt
+  581  git add .
+  582  git commit -m "CM5"
+  583  clear
+  584  git log --oneline
+  585  ls
+  586  git ls-files
+  587  git status
+  588  git reset --soft 196325c
+  589  git status
+  590  ls
+  591  git ls-files
+  592  git log --oneline
+  593  git commit -m "CM5.1"
+  594  git log --oneline
+  595  git status
+  596  ls
+  597  git ls-files
+  598  git reset --mixed 196325c
+  599  git status
+  600  ls
+  601  git ls-files
+  602  git log --oneline
+  603  git add .
+  604  git commit -m "CM5.2"
+  605  git status
+  606  ls
+  607  git ls-files
+  608  git log --oneline
+  609  git reset --hard 196325c
+  610  git log --oneline
+  611  git status
+  612  git ls-files
+  613  ls
+  614  git reset --hard 7c7d11d
+  615  git status
+  616  git log --oneline
+  617  git ls-files
+  618  ls
+  619  clear
+  620  git log --oneline
+  621  cd ..
+  622  mkdir testrepo3
+  623  cd testrepo3
+  624  ls
+  625  clear
+  626  git init
+  627  echo "rec1" >> s1.txt
+  628  git add .
+  629  git commit -m "CM1"
+  630  echo "rec1" >> s2.txt
+  631  git add .
+  632  git commit -m "CM2"
+  633  echo "rec1" >> s3.txt
+  634  git add .
+  635  git commit -m "CM3"
+  636  echo "rec1" >> s4.txt
+  637  git add .
+  638  git commit -m "CM4"
+  639  clear
+  640  git log --online
+  641  git log --oneline
+  642  ls
+  643  git ls-files
+  644  git revert a90fc3c
+  645  git log --oneline
+  646  ls
+  647  git ls-files
+  648  git status
+  649  git show 7356796
+  650  git log --oneline
+  651  ls
+  652  git revert 7356796
+  653  git log --oneline
+  654  ls
+  655  git revert 27095b6
+  656  ls
+  657  git log --oneline
+  658  git revert c9febb9
+  659  git log --oneline
+  660  ls
+  661  git reset --hard bf32d1d
+  662  git log --oneline
+  663  ls
+  664  ls
+  665  cd ..
+  666  ls
+  667  mkdir testrepo4
+  668  cd testrepo4/
+  669  git init
+  670  clear
+  671  echo "rec1" >> s1.txt
+  672  git add .
+  673  git commit -m "CM1 from master"
+  674  echo "rec1" >> s2.txt
+  675  git add .
+  676  git commit -m "CM2 from master"
+  677  echo "rec1" >> s3.txt
+  678  git add .
+  679  git commit -m "CM3 from master"
+  680  clear
+  681  git log --oneline
+  682  ls
+  683  git branch
+  684  git branch feature1
+  685  git branch
+  686  git switch -c feature2
+  687  git branch
+  688  git switch master
+  689  git branch
+  690  git checkout -b feature3
+  691  clear
+  692  git switch master
+  693  git log --oneline
+  694  git switch feature1
+  695  git log --oneline
+  696  ls
+  697  echo "rec1" >> a1.txt
+  698  git add .
+  699  git commit -m "CM1 from feature1"
+  700  git log --oneline
+  701  ls
+  702  git switch master
+  703  ls
+  704  git log --oneline
+  705  git merge feature1
+  706  ls
+  707  git log --oneline
+  708  git branch
+  709  git branch feature4
+  710  git log --oneline
+  711  git switch feature4
+  712  ls
+  713  clear
+  714  ls
+  715  cat s1.txt
+  716  echo "rec2 from feature4" >> s1.txt
+  717  git add .
+  718  git commit -m "CM1 from feature4"
+  719  git log --oneline
+  720  git switch master
+  721  git merge feature4
+  722  git log --oneline
+  723  ls
+  724  cat s1.txt
+  725  git switch feature1
+  726  clear
+  727  ls
+  728  cat s1.txt
+  729  echo "rec2 from feature1" >> s1.txt
+  730  cat s1.txt
+  731  giit add .
+  732  git add .
+  733  git commit -m "CM2 from feature1"
+  734  git switch master
+  735  cat s1.txt
+  736  git merge feature1
+  737  cat s1.txt
+  738  vi s1.txt
+  739  cat s1.txt
+  740  git add .
+  741  git commit -m "Resolved Merge Conflict"
+  742  git log --oneline
+  743  git status
+  744  cat s1.txt
+  745  clear
+  746  history
 			
 Next : 
 
