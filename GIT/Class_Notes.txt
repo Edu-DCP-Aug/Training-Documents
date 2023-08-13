@@ -1057,5 +1057,223 @@ Next :
 			
 			
 			
+#########################
+DAY - 4 - 13th Aug. 2023
+#########################
+			
+		git rebase :::
+		git squash :::	
+			
+		git rebase :::
+
+			Rebase :::			### Should be executed from current branch
+				Rebase is used to maintain the linear commit history without any deviation.
+				It helps to prevent merge conflicts in Target Branch.
+				It helps to keep the current branch in-sync with target branch
+				
+		Repo1:
+			master --> cm1,cm2,cm3 
+			
+				upon feature1 merge:	cm1,cm2,cm3,f1cm1,f2cm2,f1cm3
+					
+				by default when we merge feature2 : cm1,cm2,cm3,f2cm1,f2cm2,f2cm3,f1cm1,f2cm2,f1cm3				### INVALID
+				
+				with rebase option when we merge feature2 : cm1,cm2,cm3,f1cm1,f2cm2,f1cm3,f2cm1,f2cm2,f2cm3		### VALID
+					
+				feature1 --> cm1,cm2,cm3 
+						--> cm1,cm2,cm3,f1cm1,f2cm2,f1cm3
+						
+						git rebase master	
+						
+						--> cm1,cm2,cm3
+						
+						git switch master 
+						git merge feature1
+				
+				feature2 --> cm1,cm2,cm3
+						--> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+						
+						git rebase master
+						
+						---> cm1,cm2,cm3,f1cm1,f2cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						
+						git switch master 
+						git merge feature2 
+
+		git squash :::
+
+			SQUASH ::::
+				Is used to combine more than once commits into single commit point.
+				
+				
+		Repo1:
+			master 	--> cm1,cm2,cm3 
+					
+					--> cm1,cm2,cm3,f1cm1,2,3,4,5,6,7,8,9,.......................,n,f2cm1,2,3,4,5,6,7,8,9,.......................,n
+					
+
+				feature1 --> cm1,cm2,cm3 
+							 cm1,cm2,cm3,f1cm1,2,3,4,5,6,7,8,9,.......................,n -> f1final_commit
+							 
+							 git rebase master
+							 git switch master 
+							 git merge feature1
+		
+				feature2 --> cm1,cm2,cm3 
+							 cm1,cm2,cm3,f2cm1,2,3,4,5,6,7,8,9,.......................,n
+
+							 git rebase master
+							 git switch master 
+							 git merge feature2
+
+		git squash can be implemented :::
+		
+			1. Before Merge --> While working in current branch 
+			
+					git rebase -i HEAD~5
+			Repo1:
+				master 	--> cm1,cm2,cm3 
+				
+					feature1 --> cm1,cm2,cm3,f1func1cm1,2,3,4,5,6,7,8,9
+					
+						git rebase -i HEAD~9
+						
+					feature1 --> cm1,cm2,cm3,f1func1,f1func2cm1,2,3,4,5,6,7,8,9
+						
+						git rebase -i HEAD~9
+					
+					feature1 --> cm1,cm2,cm3,f1func1,f1func2	
+				
+				for 2 functions
 			
 			
+			2. While Merging the changes to target branch.
+			
+			Repo1:
+				master 	--> cm1,cm2,cm3 
+
+					feature1 --> cm1,cm2,cm3,f1func1cm1,2,3,4,5,6,7,8,9
+					
+						git switch master 
+						
+						git merge feature1
+						
+					result in master :: cm1,cm2,cm3,f1func1cm1,2,3,4,5,6,7,8,9
+					
+						git merge --squash feature1
+						
+						git commit -m "commit Message"
+						
+
+		Scenario 4 :::
+					
+			Repo1:
+				master - cm1,cm2,c3,REL08
+				
+					Release_Branch - cm1,cm2,c3,Team1_Changes,Team2_Changes
+					
+						Integration_Branch1(Team1) - cm1,cm2,cm3,T1_Dev1_Changes,T1_Dev2_Changes
+						
+							Developer1_Branch - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9,f2c1,2,3,4,5,6,7,8,9
+								feature_Branch1 - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9
+								feature_Branch2 - cm1,cm2,c3,f2c1,2,3,4,5,6,7,8,9
+								
+							Developer2_Branch - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9,f2c1,2,3,4,5,6,7,8,9
+								feature_Branch1 - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9
+								feature_Branch2 - cm1,cm2,c3,f2c1,2,3,4,5,6,7,8,9
+					
+						Integration_Branch2(Team2) - cm1,cm2,cm3,T2_Dev1_Changes,T2_Dev2_Changes
+					
+							Developer1_Branch - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9,f2c1,2,3,4,5,6,7,8,9
+								feature_Branch1 - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9
+								feature_Branch2 - cm1,cm2,c3,f2c1,2,3,4,5,6,7,8,9
+								
+							Developer2_Branch - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9,f2c1,2,3,4,5,6,7,8,9
+								feature_Branch1 - cm1,cm2,c3,f1c1,2,3,4,5,6,7,8,9
+								feature_Branch2 - cm1,cm2,c3,f2c1,2,3,4,5,6,7,8,9
+								
+		
+		Cherry-pick --> Team1_Changes to master.
+		
+		git switch master
+		git cherry-pick <commit_id>				# should be executed from target branch.
+		
+		
+		git Stash ::::
+		
+			It is a process of saving the uncommitted changes to temporary area/temp branch.
+			
+		The git stash command enables you to switch branches without committing the current branch. "store something safely in a hidden place."
+
+Stash current work:
+$ git stash
+
+Saving stashes with a message: 
+$ git stash save "<Stashing Message>"
+
+Check the stored stashes: 
+$ git stash list
+
+Re-apply the changes that you just stashed 
+$ git stash apply
+
+Track the stashes and their changes: 
+$ git stash show
+
+
+Re-apply the previous commits: 
+$ git stash pop
+
+Delete a most recent stash from the queue: 
+$ git stash drop
+
+Delete all the available stashes at once: 
+$ git stash clear
+
+Stash work on a separate branch: 
+$ git stash branch <branch name>
+
+	
+		Repo1 : 
+			master  --> cm1,cm2,cm3
+				feature1 ---> cm1,cm2,cm3.....
+				
+					create/modify the file in a branch 
+					add the changes to staging area
+
+		GIT Remote Repository Handling !!!
+		
+		How work in remote repo. ::::
+		
+		
+		
+		-- github ==> remote src_code repository
+			gitlab 
+			az repos 
+			aws code commit 
+			bitbucket...
+			
+			
+		1. Working with Remote Repo - github.
+		
+Next :::
+		
+		Work Load :::
+			
+			Enhancement/Bugfix 		---> Working in the existing Project 
+			New Project 			---> Completely new project in remote SCM
+			
+			
+			git clone 
+			
+			git push 
+			
+			git fetch 
+			
+			git pull 
+			
+			git remote 
+			
+			
+
+		
