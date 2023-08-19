@@ -1275,5 +1275,170 @@ Next :::
 			git remote 
 			
 			
+			
+#########################
+DAY - 5 - 19th Aug. 2023
+#########################
+		
+		Handling GIT Remote Repository ::::
+		
+		Local Repo.														Remote Repo.
+		
+		
+		GITHUB -- Remote Repo.
+		Bitbucket 
+		gitlab
+		Azure Repo 
+		AWS code Commit 
+		
+		Work Load :::
+			
+			Enhancement/Bugfix 		---> Working in the existing Project 
+			New Project 			---> Completely new project in remote SCM
+			
+		
+		Enhancement/Bugfix 			---> Working in the existing Project 	
 
+
+		git clone :::
+
+			git init 	==> Is used to initialize a new git repo.
+							It create a GIT_Directory & default branch called 'master'.
+							
+			git clone 	==> It is used to clone/copy the entire remote repo. into Local Machine.
+			
+			git add 	==> It is used to add the changes from Working dir. to Staging Area 
+			
+			git commit 	==> It is used to commit the changes from staging area to Local Repo.
+			
+			git push 	==> It is used to Push the changes from Local Repo. to Remote Repo.
+			
+			
+			git fetch/git pull ==> Both are used to handle incremental changes from remote repository.
+			
+			git fetch 	==> It is used to check if there is any incremental changes present in remote repo.
+							If there are any changes exist, The incremental changes will be updated only the local repo. NOT Working Directory.
+			
+			git pull 	==> It is used to check if there is any incremental changes present in remote repo.
+							If there are any changes exist, The incremental changes will be updated in the local repo. as well as in the working dir.
+							===> git fetch + git merge
+			
+			
+			git fork 	==> It is used to copy from one remote repo to another remote repo.
+			
+	
+		git clone https://github.com/Edu-DCP-Aug/mytestrepo1.git
+		
+		github Access Token ::: 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
+		
+		Token Based Authentication ::::
+		Password/Key/Token/Passwordless 
+		
+		
+		New Project 			---> Completely new project in remote SC
+		
+		1. Remote repo. 
+		2. Link the remote repo to local repo 
+		
+				git remote add origin https://github.com/Edu-DCP-Aug/project1.git
+				
+				git remote remove origin 
+				
+				git remote -v 
+				
+		3. push the changes to remote repo.
+		
+		
+		git branch -M newbrnchname		#
+		
+  447  cd DCP-5th-Aug/
+  448  clear
+  449  ls
+  450  mkdir myprojects
+  451  cd myprojects/
+  452  clear
+  453  ls
+  454  git clone https://github.com/Edu-DCP-Aug/mytestrepo1.git
+  455  ls
+  456  cd mytestrepo1/
+  457  ls
+  458  ls -a
+  459  clear
+  460  ls
+  461  ls -a
+  462  git status
+  463  git remote -v
+  464  git log --oneline
+  465  git branch
+  466  git switch -c localfeature1
+  467  echo "rec1" >> localfile2.txt
+  468  git add .
+  469  git commit -m "Local File2.txt created"
+  470  git status
+  471  git log --oneline
+  472  git push -u origin localfeature1
+  473  git status
+  474  git switch main
+  475  git status
+  476  ls
+  477  git switch localfeature1
+  478  echo "rec1" >> f2.txt
+  479  git add .
+  480  git commit -m "f2.txt created"
+  481  git push -u origin localfeature1
+  482  clear
+  483  git switch main
+  484  git status
+  485  git log --oneline
+  486  ls
+  487  git fetch
+  488  ls
+  489  git ls-files
+  490  clear
+  491  git fetch
+  492  git pull
+  493  ls
+  494  git status
+  495  ls
+  496  git pull
+  497  ls
+  498  clear
+  499  clear
+  500  exit
+  501  cd e:
+  502  cd DCP-5th-Aug/
+  503  clear
+  504  ls
+  505  cd myprojects/
+  506  clear
+  507  mkdir project1
+  508  cd project1/
+  509  clear
+  510  ls
+  511  git init
+  512  echo "rec1" >> f1.txt
+  513  git add .
+  514  git commit -m "CM1 from local"
+  515  git log --oneline
+  516  ls
+  517  git remote add origin https://github.com/Edu-DCP-Aug/project1.git
+  518  git remote -v
+  519  git remote remove origin
+  520  git remote -v
+  521  git remote add origin1 https://github.com/Edu-DCP-Aug/project1.git
+  522  git remote -v
+  523* git
+  524  git remote -v
+  525  git remote -v
+  526  git branch -M main
+  527  git branch -M master
+  528  git push -u origin1 master
+  529  clear
+  530  git branch -M asdfasdfs
+  531  git branch -M master
+  532  history
+
+
+################
+	
 		
