@@ -1,0 +1,140 @@
+#########################
+DAY - 5 - 19th Aug. 2023
+#########################	
+	
+		Build Orchestration Tool -- Jenkins 
+		
+		Jenkins Architecture :::
+		
+			Master / Slave Architecture :::
+			
+			
+			Jenkins_Master - VM  ==> It is used to create the Jenkins Jobs/Project and Schedule the projects to slave Machines
+			
+			
+			Application Build ==> 
+					--> compile the source code & Create Artifacts (binaries - *.war/*.jar)
+					--> Java web application 
+							maven -> is a build tool 
+							
+						Build Server ==> Install the build tools like maven --> jdk, maven, git 
+				
+				Jenkins_Master -VM -  It is used to create the Jenkins Jobs/Project and Schedule the projects to slave Machines
+					Jenkins_Slave_Build Server1		>> java 
+					Jenkins_Slave_Build Server2		>> .Net 
+					Jenkins_Slave_Build Server3		>> Python 
+					Jenkins_Slave_Build Server4		>> Angular 
+					Jenkins_Slave_Build Server5		>> NodeJS
+					
+			
+			Server -- VM 
+			
+				Dev Server 
+				Build Server 
+				
+				Target Server/Hosted Server		VM 
+						Install the Application Server  --> Tomcat / Nginx 
+					Test_Server
+						QA 
+						UAT 
+					Production Server 
+					
+		
+		Developers' Perspective :::
+		
+			Developers are just consumers . to execute the Jenkins CI/CD Jobs.
+			
+		DevOps Perspective :::
+		
+		Roles & Responsiblity :
+		
+			- Installation of Jenkins 
+			- Management of Plugins
+			- Manage Tools 
+			- Manage Users 
+			- Manage Credentials 
+			- Manage Remote Servers 
+			- Manage Master and Slave Node Configurations
+			- Manage Security 
+			- Manage Backup & Recovery
+			- Manage Periodic Upgrades 
+			- Create Jenkins CI/CD Pipeline jobs to enable automated build and deployments 
+			
+		- Installation of Jenkins ::
+
+			AWS Cloud Platform --> 
+				EC2 Instance -->  Virtual Machine :::
+					Linux - ubuntu Machine 
+					https://aws.amazon.com/console/
+				1. Launch AWS EC2 Instance 
+					Setup the inbound rule to port 8080 (for Jenkins)
+				
+				2. Connect to AWS EC2 Instance
+						- EC2 Instance Connect 
+						- ssh agents 
+							- MobaXterm 	
+									https://mobaxterm.mobatek.net/download.html							
+						- Terminals/Console 
+						
+				3. Login to EC2 Instance 
+				
+					Install and configure the required DevOps Tools & Services	
+								Jenkins 	-	https://www.jenkins.io/doc/book/installing/
+
+			    Free - tier account 
+						VM --> run the a vm for 750 hrs./month
+				
+					10 VMs ==> 75 hrs/month 
+					
+			1. Install the pre-requisites 
+			2. Install the actual tool 
+			3. Post-Installation Activities (Enable)
+					
+					
+			In Linux :
+			
+				Package Manager 
+					yum			RHEL/Centos 
+					apt			Ubuntu
+					rpm
+					dnf 		Fedora
+					
+
+#Install OpenJDK 17	
+				
+sudo -i 
+		
+sudo apt update
+sudo apt install openjdk-17-jre
+java -version			
+		
+#Install Jenkins :::	
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update -y
+sudo apt-get install jenkins -y
+
+jenkins --version 
+
+systemctl status jenkins
+systemctl start jenkins
+systemctl stop jenkins
+systemctl restart jenkins
+systemctl enable jenkins
+		
+		
+		Access Jenkins in web browser :
+		
+		http://<public_ip_addr>:8080/
+		
+
+Next ::
+
+	How to Manage/Adminstrate Jenkins using GUI Console 
+	Jenkins Master/Slave 
+	Create CICD Pipeline Jobs 
+	How to setup the test server - Tomcat 
