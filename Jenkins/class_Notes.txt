@@ -138,3 +138,106 @@ Next ::
 	Jenkins Master/Slave 
 	Create CICD Pipeline Jobs 
 	How to setup the test server - Tomcat 
+	
+#########################
+DAY - 6 - 20th Aug. 2023
+#########################	
+
+
+
+		Create a simple jenkins jobs and run in jenkins master 
+		
+		working with freestyle project / pipeline projects 
+		
+		Handle variables in Jenkins :::
+		
+			Environment Variables 
+			
+			User-Defined Variables 
+		
+		Jenkins Slave node Configs.
+			
+			Master_
+				Slave1 VM --> java application build 
+								git, maven, jdk
+							Connect to jenkins master 
+								User to be created 
+									SSH Connection 
+										key based authentication 
+		
+		
+		Job/Project 
+		
+		Jenkins Pipeline Projects ::::
+			
+				Declarative Pipeline 	==> Written using Groovy scripting Lang.
+								start with keyword - pipeline
+			Stages :
+
+				1 - SCM Checkout 
+				2 - Build 
+				3 - Deployment to QA / UAT Servers
+		
+pipeline {
+    agent { label 'slave1' }
+	
+	tools {
+        maven "maven-3.6.3"
+    }
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/LoksaiETA/Java-mvn-app2.git'
+            }
+        }
+        stage('Java Maven Build') {
+            steps {
+                echo 'Perform Build'
+				sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+        }
+        stage('Deploy to QA Server') {
+            steps {
+				script {
+				sshPublisher(publishers: [sshPublisherDesc(configName: 'QA-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/mvn-hello-world.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+			}	
+            }
+        }
+    }
+}
+
+
+
+				script {
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'QA-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/mvn-hello-world.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+
+QA _Server :::	
+
+	Test Environment :::
+		Run the application & Test ==> 
+		
+		Launch a new VM :
+							jdk, Application Server - Tomcat		--> port 8080 
+							Create user 
+							SSH Key 
+							Connect 
+							
+							Publish over SSH Plugins 
+							
+		
+		Deployment ::::
+		
+		copying the artifacts from source machine to target machine ( QA/UAT/PROD) 
+		
+		Source Machine :						Target Machine :
+		
+		
+			slave1 											Tomcat_Server
+				target/*.war										/opt/tomcat/webapps
+				
+				
+Summary :::
+			Jenkins 
