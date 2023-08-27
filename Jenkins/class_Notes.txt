@@ -236,3 +236,65 @@ QA _Server :::
 				
 Summary :::
 			Jenkins 
+	
+#########################
+DAY - 7 - 26th Aug. 2023
+#########################
+
+
+		- Jenkins Build Triggers 
+		CI/CD ==> 
+		
+		Build Triggers ::::
+		
+			This used to schedule the Jenkins Jobs.
+			
+			Jenkins 
+			
+			Non-Prod Server 		Prod Servers
+				DEV 					Prod 
+				TEST 
+			
+			Jenkins Job : 
+			
+			Scenario 1:
+			
+				scheduled to run twice a day 
+					9AM 	-- Start the dev and test servers 100+
+					10PM 	-- Stop the Dev & Test Servers 100+
+					
+					BUILD PERIODIC
+					
+			Scenario 2:
+			
+				Developer --> src_code 
+					Build Cycle --> Appln build 
+					Test Cycle -  8AM,12noon,4PM 
+					
+				Jenkins Job :  monitor the src_code repo.
+
+					POLL SCM  
+
+			Scenario 3:
+			
+				As soon as the remote repo gets any commit, will trigger the jenkins_job.
+				
+					GITHUB WEBHOOK
+					
+				#Github webhook to automatically trigger build pipeline!
+
+				#Goto Github Repository setting, 
+				Select webhook, 
+
+				Click Add Webhook
+
+				Enter Jenkins Master URL. eg.:
+				http://<public-IP>:8080/github-webhook/
+
+				Choose the push event and save the webhook configuration
+					
+			EMail_Notification ::
+			
+			In Gmail Account:
+				Create MFA --
+				Create App Token/Password 
