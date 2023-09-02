@@ -1917,4 +1917,126 @@ DAY - 8 - 27th Aug. 2023
 			docker Registry :::
 			
 			dockerhub
+
+#########################
+DAY - 9 - 2nd Sep. 2023
+#########################
+
+		https://hub.docker.com/
 		
+		Terminologies :
+		
+		Install Docker Engine 
+		
+		Working Docker CLI Commands 
+		Accessing Container Images from DockerHub
+		Create Container/Images 
+		Volumes
+		port mapping/binding
+		Container Orchestration Tools :
+			docker swarm & Kubernetes 
+			
+		Terminologies :
+
+			Image 
+			Container
+			Container Registry/Repository
+				Managed Services :
+					ECS --> ECR 
+					
+			Micro-Service Based Application ==>  
+			
+			centos / rhel ==> yum install docker -y
+
+			ubuntu ==> apt install docker.io -y
+		
+		Docker - Container State :
+				running, exit state
+		
+		
+		docker images 
+		
+		docker pull <image_name>
+		docker run <image_name> 
+		
+		docker ps 
+		
+		docker ps -a 
+		
+		docker run ==> 
+		
+		Container can be executed in :
+		
+			Foreground / attached Mode:			
+					docker run centos sleep 20
+				
+			Background / detached Mode:
+					docker run -d centos sleep 20
+					
+			Interative Mode:
+					docker run -it centos bash
+					
+			docker stop <container_id>
+			
+			docker rm <container_id>		=> Remove the Container 
+			
+			docker rmi <image_name>			=> Remove the Image
+			
+		
+		Port Mapping / Port Binding :::
+
+		-p <host_port>:<container_port>
+		 
+		docker run -it -p 8089:8080 tomcat:8.0
+		
+		docker logs <container_id>
+		
+		How to create Docker Images :::
+		
+			--> docker commit 
+					docker commit cb45bd29123c loksaieta/dcpaugdeb-git
+			
+			--> docker build 
+					Dockerfile
+					
+				docker build -t loksaieta/dcpaugdeb-gitd1 .
+
+FROM debian
+RUN apt-get update
+RUN apt-get install git -y
+
+		Publish Docker Images to Container Registry ---> dockerHub
+
+		Login to DockerHub using Docker CLI :
+
+			docker login -u eta
+			
+			dckr_pQ
+		
+			docker push <image_name>
+
+
+		Docker Volume :::
+		
+			On container perspective :
+			
+				Stateless Application 
+				
+				Stateful Application 
+				
+		Create Docker Volume in Host Machine and attach it with the containers.
+
+			docker run -it --mount source=dcpaugvol1,destination=/dcpaugvol1 centos
+
+			docker run centos sleep 300
+			docker exec -it centos 	==> used to login to the running container
+			
+		Docker Compose 	==> It is used to run multiple containers as a service.
+		
+			Micro-Service1 ==> 	Front_end(container1)
+								Back_end(container2)
+								Appln_Logic(container3)
+		
+		Docker Swarm 	==> Used to for Container orchestration.
+		
+		Kubernetes 		
