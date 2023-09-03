@@ -1,0 +1,84 @@
+			
+		
+#########################
+DAY - 10 - 3rd Sep. 2023
+#########################
+		
+		Kubernetes  - Open Source Container Orchestration Tool
+		
+		AWS		--> ECS,ECR,EKS  
+		AZURE   --> AKS 
+		GCP     --> GKS
+		
+		Kubernetes Architecture
+			Kubernetes Components
+			
+		Kubernetes_Master 
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				
+			Kubernetes Cluster			==> It is collection of Worker Nodes.	
+				
+		Kubernetes_Master 			
+			Kubernetes_Cluster1
+				Kubernetes_WorkerNode1		pod1
+				Kubernetes_WorkerNode2		pod1		
+				Kubernetes_WorkerNode3		pod1		
+				Kubernetes_WorkerNode4		
+				Kubernetes_WorkerNode5
+
+				
+			Kubernetes_Cluster2
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2		
+				Kubernetes_WorkerNode3		
+				Kubernetes_WorkerNode4		
+				Kubernetes_WorkerNode5
+				
+		Kubernetes_Demo :
+		
+				Kubernetes_Master 				VM(Ubuntu)
+					Kubernetes_WorkerNode1		VM(Ubuntu)
+					Kubernetes_WorkerNode2		VM(Ubuntu) 
+					
+		How to install and Config Kubernetes ?
+		
+			Minikube
+			
+			Kubeadm
+				
+		Kubernetes Concepts :::
+		
+			kubectl 
+			
+			pods
+				Pod Networking
+
+			Namespaces
+			
+			Controller Objects
+				Replication Controller 
+				Replicaset
+				Daemonset
+				Deployment 
+				
+			Kubernetes Volumes 
+				Config_Maps
+				Secrets
+				Persistant Volume
+				Persistant Volume Claim
+				Hostpath
+			
+			Kubernetes Services 
+				ClusterIP 
+				NodePort
+				Load Balancer
+			
+			
+			Pod with Application Image.
+			Access the pod thru internet.
+			
+			Micro-Service1 ==> 	Front_end(pod1)
+								Back_end(pod2)
+								Appln_Logic(pod3)
+		
