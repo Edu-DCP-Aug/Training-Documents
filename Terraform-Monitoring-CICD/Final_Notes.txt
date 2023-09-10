@@ -1,0 +1,314 @@
+					
+#########################
+DAY - 12 - 10th Sep. 2023
+#########################
+
+				1. Install Terraform 
+					
+				2. IDE to create and execute Terraform script
+						Visual Studio Code ? - in Window
+						
+						
+				Create Access Key and Secret Key 
+				
+					 + create 
+					
+					 - destory 
+					
+					 ~ update 
+					 
+					 
+
+	Create CICD Pipeline ::::
+	
+		scm_chkout		---> build 		---> Deployed to QA_Server
+		
+	
+	SCenario 1:
+	Pipeline1 :  gitOps  IAC 
+		
+			SCM_Checkout 		--->	Provision_QA_Server(Terraform)		--->	Configure QA_Server(ansible)
+			
+	Pipeline2 :				
+			scm_chkout		---> build 		---> Deployed to QA_Server
+		
+
+
+		
+	Scenario 2:
+	Pipeline1	:
+	
+		
+		scm_chkout		---> build 	--->	Provision_QA_Server(Terraform)		--->	Configure QA_Server(ansible)	---> Deployed to QA_Server 	---> QA_Test
+		
+						---> Deploy to UAT			--> UAT Test	---> Deploy to PROD 						
+						
+						--> Destroy the QA_Server
+
+***************************************************************************						
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "AH"
+  secret_key = "ir"
+}
+
+# Create AWS Instance
+
+resource "aws_instance" "dcpappserver1" {
+  ami           = "ami-0700df939e7249d03"
+  instance_type = "t2.micro"
+  key_name      = "loksaieta123"
+
+  tags = {
+    Name = "dcpServer"
+  }
+}
+
+**************************************************************************
+
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "AKE"
+  secret_key = "u2AWEulaj3GmT"
+}
+
+# Create VPC
+
+resource "aws_vpc" "myvpc8" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "myvpc8"
+  }
+}
+
+# Create Subnet 
+
+resource "aws_subnet" "mysubnet8" {
+  vpc_id     = aws_vpc.myvpc8.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "mysubnet8"
+  }
+}
+
+# Internet Gateway
+
+resource "aws_internet_gateway" "mygw8" {
+  vpc_id = aws_vpc.myvpc8.id
+
+  tags = {
+    Name = "mygw8"
+  }
+}
+
+# Route Table
+
+resource "aws_route_table" "myrt8" {
+  vpc_id = aws_vpc.myvpc8.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.mygw8.id
+  }
+
+  tags = {
+    Name = "myrt8"
+  }
+}
+
+# Route Table Association
+
+resource "aws_route_table_association" "myrta8" {
+  subnet_id      = aws_subnet.mysubnet8.id
+  route_table_id = aws_route_table.myrt8.id
+}
+
+# Security Groups
+
+resource "aws_security_group" "mysg8" {
+  name        = "mysg8"
+  description = "Allow inbound traffic"
+  vpc_id      = aws_vpc.myvpc8.id
+
+  ingress {
+    description      = "HTTP"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description      = "SSH"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "mysg8"
+  }
+}
+
+# Create Instance
+
+resource "aws_instance" "tempinstance1" {
+  ami           = "ami-025b4b7b37b743227"
+  instance_type = "t2.micro"
+  associate_public_ip_address = true
+  subnet_id = aws_subnet.mysubnet8.id
+  vpc_security_group_ids = [aws_security_group.mysg8.id]
+  key_name = "lkey"
+
+  tags = {
+    Name = "TF-Server2"
+  }
+}
+
+
+Monitoring ::	
+
+	Continous Monitoring ::
+	
+		Production Support / Monitoring :::
+		
+			- Infra-Structure Monitoring
+						Prometheus/Grafana/Nagios/Splunk/Dynatrace
+							Alerts 
+							Webhook trigger			
+			
+			- Application Monitoring	
+						AppDynamics
+						
+						
+			Prometheus :::
+			
+				Time series Database ::
+					PromQL
+				
+				
+			Add New Target to Prometheus Server :::
+			
+				Install Node Exporter in Target Machine.
+				
+					
+			
+CICD Pipeline Demo :::::
+
+
+		Build & Deployment of my java web application in Kubernetes ??
+		
+		Jenkins 
+		
+		Pipeline :::
+		
+		Resources :::
+		
+		No. of VMs 
+		Tools 
+		
+
+
+CICD Pipeline :
+
+	SCM_Checkout 
+	Appln Build 
+	Docker Build 
+	Publish Docker Image to DockerHub
+	Deploy to Kubernetes Cluster
+	
+	Jenkins_Master 		-> To Create Job & Schedule
+		Jenkins_Slave 	-> To Build Application & Docker Image
+	Kubernetes_Master 
+		Kubernetes_Cluster(WN1,WN2)
+			
+
+
+pipeline {
+    agent { label 'slave1' }	
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven_3.6.3"
+    }
+
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	} 
+    
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/LoksaiETA/devops-java-webapp.git'
+            }
+		}
+        stage('Maven Build') {
+            steps {
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+		}
+       stage("Docker build"){
+            steps {
+				sh 'docker version'
+				sh "docker build -t loksaieta/loksai-eta-app:${BUILD_NUMBER} ."
+				sh 'docker image list'
+				sh "docker tag loksaieta/loksai-eta-app:${BUILD_NUMBER} loksaieta/loksai-eta-app:latest"
+            }
+        }
+        stage('Approve - Publish Image to dockerhub'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
+		stage('Login2DockerHub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Push2DockerHub') {
+
+			steps {
+				sh "docker push loksaieta/loksai-eta-app:latest"
+			}
+		}
+        stage('Approve - Deploy to Kubernetes'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
+        stage('Deploy to Kubernetes Cluster') {
+            steps {
+		script {
+		sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f k8smvndeployment.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+		       }
+            }
+    	}
+    }
+}			
+						
