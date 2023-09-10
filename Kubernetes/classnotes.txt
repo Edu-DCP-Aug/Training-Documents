@@ -82,3 +82,153 @@ DAY - 10 - 3rd Sep. 2023
 								Back_end(pod2)
 								Appln_Logic(pod3)
 		
+		
+#########################
+DAY - 11 - 9th Sep. 2023
+#########################
+
+			Controller Objects
+				Replication Controller 
+				Replicaset
+				Daemonset
+				Deployment 
+				
+			Kubernetes Volumes 
+				Config_Maps
+				Secrets
+				Persistant Volume
+				Persistant Volume Claim
+				Hostpath
+			
+			Kubernetes Services 
+				ClusterIP 
+				NodePort
+				Load Balancer
+				
+			Monitoring Tools
+			Terraform
+			
+
+		Replication Controller 
+		Replicaset			3 
+		
+		
+			- Both RC and RS are used to replicate the pods. 
+			- It is used to run the specific no. of pods.
+			- Pods will be distributed in the available worknodes.
+			- RC uses equality based operator 
+			- RS uses Set Based operator. - It can be automatically created when the deployment controller object is created.
+			
+		
+		Daemonset :
+		
+			- It is used to deploy a copy of pod in a set or all the available worknodes
+			
+			- Eg.: Monitoring(Pod)
+		
+		Deployment Controller :::
+		
+			- Used to deploy the application 
+			- Upgrade 
+			- Rollback
+			- Scale Up 
+			- Scale Down
+			
+			StrategyType:           RollingUpdate			# Default deployment Strategy
+
+		
+		app_v1.1 ==> 
+		app_v1.2
+		
+			Kubernetes Volumes 
+				Config_Maps
+				Secrets
+				Persistant Volume
+				Persistant Volume Claim
+				Hostpath
+			
+
+				Config_Maps			
+					Deploy an application :	
+						build, create artifact 	==> webapp.war 
+						docker build 			==> (webapp.war,tomcat)	-===> webaappimage1		==> published to container registry
+						
+						QA 	qa_config_files/config_params
+						
+						UAT uat_config_files/config_params
+						
+						PROD prod_config_files/config_params
+						
+						
+				Secrets
+						QA 	qa_secrets/credentials_files
+						
+						UAT uat_secrets/credentials_files
+						
+						PROD prod_secrets/credentials_files
+
+
+				Persistant Volume
+				Persistant Volume Claim
+				
+					Static & Dynamic Provisioning
+				
+				Hostpath
+						A volume will be created in the corresponding workernode.
+						
+						
+				empty-dir
+						
+
+			Kubernetes Services 
+				ClusterIP 
+				NodePort
+				Load Balancer
+				
+				
+			Package Managers :::
+			
+				HELM 	==> is a package manager for Kubernetes.
+				
+					Kubernetes Dashboards..
+					
+				HELM Chart Repository.
+				
+			
+			Fundamentals of Monitoring Tools :
+			
+			Terraform :::
+			
+				IAC Tools ::::
+				
+					Terraform		=> Server Provisioning/Creating 
+					Ansible 		=> Configuration Management	
+					
+			Action ::
+			
+				1. Install Terraform 
+					
+				2. IDE to create and execute Terraform script
+						Visual Studio Code ? - in Window
+					
+					
+						- Identify the scope
+						- Write the terraform script 
+						- Initilize terraform provider
+						- Perform Terraform Plan
+								Validate the script 
+						- Perform Terraform Apply
+						
+					 + create 
+					
+					 - destory 
+					
+					 ~ update 
+					 
+				
+				Using Terraform script :
+				
+					Create EC2 Instance 
+					Create complete resources for EC2 Instance	==> VPC, Subnet, IGW, RT, SG,EC2
+					
+	
